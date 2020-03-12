@@ -9,7 +9,7 @@ function App() {
   return (
     <div>
       <Aux>
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Layout>
             <MiMemo />
           </Layout>
