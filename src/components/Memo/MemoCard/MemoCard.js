@@ -31,7 +31,7 @@ const Text = styled.div`
 const MemoCard = props => {
   return (
     <Link
-      to={{ pathname: '/memo-form/' + props.memoid, props: props }}
+      to={{ pathname: '/memo-form/' + props.memoid }}
       style={{ color: 'inherit', textDecoration: 'inherit' }}
     >
       <MemoCardDiv>

@@ -19,7 +19,7 @@ const MiMemo = () => {
   return (
     <div>
       <Switch>
-        <Route path="/memo-form/:noteid" render={(routeProps) => (<MemoForm {...routeProps} />)} />
+        <Route path="/memo-form/:memoid" render={(routeProps) => (<MemoForm {...routeProps} />)} />
         <Route path="/memo" component={Memo} />
         <Redirect exact from="/" to="/memo" />
         <Route

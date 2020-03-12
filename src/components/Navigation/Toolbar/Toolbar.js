@@ -8,7 +8,7 @@ const Bar = styled.header`
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #3E2F5B;
+  background-color: #261132;
   display: flex;
   justify-content: center;
   align-items: center;
