@@ -25,6 +25,7 @@ const Date = styled.div`
 `;
 
 const Text = styled.div`
+  word-wrap: break-word;
   font-size: 75%;
 `;
 

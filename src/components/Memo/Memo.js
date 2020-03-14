@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router';
-import db from '../../db';
+import { Add } from '@material-ui/icons';
 import styled from 'styled-components';
+import db from '../../db';
 
 import MemoCard from './MemoCard/MemoCard';
 import Aux from '../../hoc/Auxiliary';
@@ -25,8 +26,8 @@ const Memo = () => {
   useEffect(() => {
     db.table('memos')
       .toArray()
-      .then(memos => {
-        setMemos(memos);
+      .then(value => {
+        setMemos(value);
         setLoading(false);
       });
   }, []);
@@ -35,12 +36,10 @@ const Memo = () => {
 
   if (memos?.length) {
     cards = memos.map(memo => {
-      const date =
-        memo.date.getDate() +
-        '-' +
-        parseInt(memo.date.getMonth() + 1) +
-        '-' +
-        memo.date.getFullYear();
+      const date = `${memo.date.getDate()}-${parseInt(
+        memo.date.getMonth() + 1,
+        10
+      )}-${memo.date.getFullYear()}`;
       return (
         <MemoCard
           key={memo.memoid}
@@ -54,7 +53,7 @@ const Memo = () => {
   } else if (!loading) {
     cards = (
       // eslint-disable-next-line jsx-a11y/accessible-emoji
-      <None role="img" aria-label="face with monocle">
+      <None role='img' aria-label='face with monocle'>
         Jejda, nemáš žádné poznámky! 🧐
       </None>
     );
@@ -63,7 +62,7 @@ const Memo = () => {
   return (
     <Aux>
       <div>{cards}</div>
-      <Button clicked={() => history.push('/memo-form/new')}>+</Button>
+      <Button clicked={() => history.push('/memo-form/new')}><Add /></Button>
     </Aux>
   );
 };

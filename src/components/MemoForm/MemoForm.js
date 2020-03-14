@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import db from '../../db';
 import styled from 'styled-components';
+import { Home, Save, Delete } from '@material-ui/icons';
+import db from '../../db';
 
 import Aux from '../../hoc/Auxiliary';
 import AddButton from '../UI/Button/AddButton';
@@ -51,7 +52,7 @@ const InputTextArea = styled.textarea`
 `;
 
 const MemoForm = props => {
-  let history = useHistory();
+  const history = useHistory();
   const [memo, setMemo] = useState({
     date: new Date(),
     title: '',
@@ -60,15 +61,14 @@ const MemoForm = props => {
 
   useEffect(() => {
     let memoId = props.match.params.memoid;
-    if (memoId === 'new') {
-      return;
-    } else {
+    if (memoId !== 'new') {
+
       memoId = parseFloat(memoId);
       db.table('memos')
         .where({ memoid: memoId })
         .toArray()
-        .then(memo => {
-          setMemo(memo[0]);
+        .then(value => {
+          setMemo(value[0]);
         });
     }
   }, [props.match.params.memoid]);
@@ -113,9 +113,9 @@ const MemoForm = props => {
           rows="10"
         />
       </StyledForm>
-      <BackButton clicked={handleBack}>←</BackButton>
-      <AddButton clicked={handleAddMemo}>+</AddButton>
-      {memo.memoid && <DelButton clicked={handleDelMemo}>-</DelButton>}
+      <BackButton clicked={handleBack}><Home /></BackButton>
+      <AddButton clicked={handleAddMemo}><Save /></AddButton>
+      {memo.memoid && <DelButton clicked={handleDelMemo}><Delete /></DelButton>}
     </Aux>
   );
 };

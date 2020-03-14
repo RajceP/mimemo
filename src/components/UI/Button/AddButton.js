@@ -12,21 +12,12 @@ const StyledButton = styled.button`
   outline: 0;
   border: none;
   background: #ffb86f;
-  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14),
-    0 1px 18px 0 rgba(0, 0, 0, 0.12);
-`;
-
-const ButtonSpan = styled.span`
-  font: inherit;
-  font-size: 50px;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
 `;
 
 const Button = props => {
-  return (
-    <StyledButton onClick={props.clicked}>
-      <ButtonSpan>{props.children}</ButtonSpan>
-    </StyledButton>
-  );
+  return <StyledButton onClick={props.clicked}>{props.children}</StyledButton>;
 };
 
 export default Button;

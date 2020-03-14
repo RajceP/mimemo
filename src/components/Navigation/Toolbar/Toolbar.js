@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 const Bar = styled.header`
   height: 56px;
   width: 100%;
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   background-color: #261132;
@@ -15,7 +15,12 @@ const Bar = styled.header`
   padding: 0 20px;
   box-sizing: border-box;
   z-index: 90;
+
+  @media (max-width: 1439px) {
+    position: absolute;
+  }
 `;
+
 
 const Nav = styled.nav`
   height: 100%;
@@ -27,7 +32,7 @@ const Logo = styled.div`
 `;
 
 const Toolbar = () => {
-  let history = useHistory();
+  const history = useHistory();
 
   const LogoClicked = () => {
     history.push('/memo');
@@ -35,7 +40,7 @@ const Toolbar = () => {
 
   return (
     <Bar>
-      <Nav></Nav>
+      <Nav />
       <Logo onClick={() => LogoClicked()}>MiMemo</Logo>
     </Bar>
   );
