@@ -62,7 +62,9 @@ const Memo = () => {
   return (
     <Aux>
       <div>{cards}</div>
-      <Button clicked={() => history.push('/memo-form/new')}><Add /></Button>
+      <Button clicked={() => history.push('/memo-form/new')}>
+        <Add />
+      </Button>
     </Aux>
   );
 };

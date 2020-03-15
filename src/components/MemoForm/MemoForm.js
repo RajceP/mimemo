@@ -17,6 +17,8 @@ const StyledForm = styled.form`
   border: 2px solid #ba5c12;
   border-radius: 12px;
   text-align: center;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
 `;
 
 const Text = styled.div`
@@ -36,6 +38,8 @@ const InputText = styled.input`
   color: white;
   background-color: inherit;
   font: inherit;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
 `;
 
 const InputTextArea = styled.textarea`
@@ -49,6 +53,8 @@ const InputTextArea = styled.textarea`
   color: white;
   background-color: inherit;
   font: inherit;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
 `;
 
 const MemoForm = props => {
@@ -56,13 +62,12 @@ const MemoForm = props => {
   const [memo, setMemo] = useState({
     date: new Date(),
     title: '',
-    text: '',
+    text: ''
   });
 
   useEffect(() => {
     let memoId = props.match.params.memoid;
     if (memoId !== 'new') {
-
       memoId = parseFloat(memoId);
       db.table('memos')
         .where({ memoid: memoId })
@@ -99,23 +104,31 @@ const MemoForm = props => {
       <StyledForm>
         <Text>Nadpis:</Text>
         <InputText
-          type="text"
+          type='text'
           value={memo?.title}
           onChange={event => setMemo({ ...memo, title: event.target.value })}
           required
         />
         <Text>Text:</Text>
         <InputTextArea
-          type="text"
+          type='text'
           value={memo?.text}
           onChange={event => setMemo({ ...memo, text: event.target.value })}
           required
-          rows="10"
+          rows='10'
         />
       </StyledForm>
-      <BackButton clicked={handleBack}><Home /></BackButton>
-      <AddButton clicked={handleAddMemo}><Save /></AddButton>
-      {memo.memoid && <DelButton clicked={handleDelMemo}><Delete /></DelButton>}
+      <BackButton clicked={handleBack}>
+        <Home />
+      </BackButton>
+      <AddButton disabled={!memo.title || !memo.text} clicked={handleAddMemo}>
+        <Save />
+      </AddButton>
+      {memo.memoid && (
+        <DelButton clicked={handleDelMemo}>
+          <Delete />
+        </DelButton>
+      )}
     </Aux>
   );
 };
