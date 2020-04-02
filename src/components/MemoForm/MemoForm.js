@@ -11,8 +11,7 @@ import BackButton from '../UI/Button/BackButton';
 
 const StyledForm = styled.form`
   width: 90%;
-  margin: auto;
-  margin-bottom: 10px;
+  margin: auto auto 10px;
   padding: 8px;
   border: 2px solid #ba5c12;
   border-radius: 12px;
@@ -22,7 +21,7 @@ const StyledForm = styled.form`
 `;
 
 const Text = styled.div`
-  padding: 5px auto;
+  padding: 5px;
   text-align: left;
   font-size: 75%;
   color: #e0ca3c;
@@ -118,12 +117,14 @@ const MemoForm = props => {
           rows='10'
         />
       </StyledForm>
-      <BackButton clicked={handleBack}>
-        <Home />
-      </BackButton>
-      <AddButton disabled={!memo.title || !memo.text} clicked={handleAddMemo}>
-        <Save />
-      </AddButton>
+      <Aux>
+        <BackButton clicked={handleBack}>
+          <Home />
+        </BackButton>
+        <AddButton disabled={!memo.title || !memo.text} clicked={handleAddMemo}>
+          <Save />
+        </AddButton>
+      </Aux>
       {memo.memoid && (
         <DelButton clicked={handleDelMemo}>
           <Delete />

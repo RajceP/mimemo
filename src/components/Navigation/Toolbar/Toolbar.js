@@ -15,21 +15,20 @@ const Bar = styled.header`
   padding: 0 20px;
   box-sizing: border-box;
   z-index: 90;
-  box-shadow: 0 0.2px 0 0 rgba(0, 0, 0, 0.2),
-    0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 0.2px 0 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14),
+    0 1px 18px 0 rgba(0, 0, 0, 0.12);
 
   @media (max-width: 1439px) {
     position: absolute;
   }
 `;
 
-
 const Nav = styled.nav`
   height: 100%;
 `;
 
 const Logo = styled.div`
-  color: #E0CA3C;
+  color: #e0ca3c;
   font-weight: bold;
 `;
 
