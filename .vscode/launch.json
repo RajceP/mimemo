@@ -3,12 +3,14 @@
   "configurations": [
     {
       "name": "Chrome",
-      "type": "chrome",
+      "type": "pwa-chrome",
+      "runtimeExecutable": "C:\\Program Files (x86)\\BraveSoftware\\Brave-Browser-Nightly\\Application\\brave.exe",
       "preLaunchTask": "npm: start",
-      "env": {"browser": "none"},
+      "postDebugTask": "npm stop",
       "request": "launch",
       "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}/src",
+      "userDataDir": false,
       "sourceMapPathOverrides": {
         "webpack:///src/*": "${webRoot}/*"
       }
